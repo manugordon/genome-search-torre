@@ -22,6 +22,18 @@ body {
   background: #393b41;
 }
 
+.users-list-favorites-container {
+  margin: auto;
+  padding: 2em 0;
+  max-width: 60%;
+  color: white;
+}
+
+.linear-progress-container {
+  margin: auto;
+  max-width: 60%;
+}
+
 /*
 a {
   text-decoration: none;

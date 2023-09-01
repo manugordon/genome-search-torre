@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import "./UserSearchBar.css";
 
 function UserSearchBar({ onSearch }) {
+  const inputRef = useRef(null);
   const [username, setUsername] = useState("");
 
   const handleInputChange = async (event) => {
@@ -18,6 +19,7 @@ function UserSearchBar({ onSearch }) {
         className="search-bar"
         label="Search people by name"
         value={username}
+        onClick={handleInputChange}
         onChange={handleInputChange}
         InputProps={{
           endAdornment: (
@@ -26,6 +28,7 @@ function UserSearchBar({ onSearch }) {
             </InputAdornment>
           ),
         }}
+        inputRef={inputRef}
       />
     </div>
   );

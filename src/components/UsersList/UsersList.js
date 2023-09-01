@@ -11,7 +11,7 @@ import "./UsersList.css";
 
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
-const UsersList = ({ user, addFavorite }) => {
+const UsersList = ({ user, favorites, addFavorite }) => {
   return (
     <List className="users-list">
       <ListItemButton component="a" href={`https://torre.ai/${user.username}`}>
@@ -23,7 +23,11 @@ const UsersList = ({ user, addFavorite }) => {
           primary={user.name}
           secondary={user.professionalHeadline}
         />
-        <FavoriteButton favorite={user} onAddFavorite={addFavorite} />
+        <FavoriteButton
+          user={user}
+          favorites={favorites}
+          onAddFavorite={addFavorite}
+        />
       </ListItemButton>
 
       <Divider className="divider" variant="fullWidth" component="li" />
