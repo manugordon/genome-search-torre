@@ -1,26 +1,35 @@
-/* .search-bar input,
-label,
-label.Mui-focused {
+.search-container {
+  padding-top: 5em;
+  padding-bottom: 1em;
+  margin: auto;
+  max-width: 60%;
+}
+div.search-bar {
+  width: 100%;
   color: white;
 }
-
-.MuiInput-underline:after {
+.search-bar input {
+  color: white;
+}
+.search-bar label {
+  color: white;
+}
+.search-bar label.Mui-focused {
+  color: white;
+}
+.search-bar .MuiInput-underline:after {
   border-bottom-color: white;
 }
-
 .search-bar .MuiOutlinedInput-root fieldset {
   border-color: white;
 }
-
-.search-bar .MuiOutlinedInput-root:hover {
+.search-bar .MuiOutlinedInput-root:hover fieldset {
   border-color: white;
   border-width: 2px;
 }
-
-.search-bar .Mui-focused fieldset {
+.search-bar .MuiOutlinedInput-root.Mui-focused fieldset {
   border-color: white;
 }
-
-.search-bar.MuiSvgIcon-root {
+.search-bar .MuiSvgIcon-root {
   color: white;
-} */
+}

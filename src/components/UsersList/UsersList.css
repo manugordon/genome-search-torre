@@ -1,0 +1,14 @@
+.users-list a {
+  text-decoration: none;
+  color: white;
+}
+
+.users-list .divider {
+  padding: 0.5em 0;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.users-list .user-info span,
+.users-list .user-info p {
+  color: white;
+}

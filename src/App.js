@@ -2,8 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import UserSearchBar from "./components/UserSearchBar/UserSearchBar";
 import axios from "axios";
-import FavoriteButton from "./components/FavoriteButton/FavoriteButton";
-
+import UsersList from "./components/UsersList/UsersList";
 // import Spinner from "./components/Spinner/Spinner";
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
     setFavorites(storedFavorites);
   }, []);
 
-  // Guardar favoritos en localStorage cuando cambian
   useEffect(() => {
     sessionStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
@@ -54,9 +52,7 @@ function App() {
             limit: 10,
           }
         );
-
         const data = getData(response.data);
-        console.log({ data: data });
         setSearchResults(data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -68,24 +64,18 @@ function App() {
   return (
     <div className="App">
       <UserSearchBar onSearch={handleSearch} />
-      <div className="results-container">
-        <ul className="results-list">
-          {searchResults.map((result, index) => (
-            <li key={index}>
-              <a href={`https://torre.ai/${result.username}`}>
-                {result.name} <br></br> {result.professionalHeadline}
-              </a>
-              <FavoriteButton favorite={result} onAddFavorite={addFavorite} />
-            </li>
-          ))}
-        </ul>
+      <div className="users-list-container">
+        {searchResults.map((item) => (
+          <UsersList user={item} addFavorite={addFavorite} />
+        ))}
       </div>
-      <h2>Favorites</h2>
+      {/* <h2>Favorites</h2>
       <ul>
+        {console.log(favorites)}
         {favorites.map((favorite, index) => (
           <li key={index}>{favorite.name}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 }

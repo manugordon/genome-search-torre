@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import { IconButton, InputAdornment, TextField } from "@mui/material";
+import { InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import "./UserSearchBar.css";
 
 function UserSearchBar({ onSearch }) {
   const [username, setUsername] = useState("");
-
-  const handleSearch = () => {
-    onSearch(username);
-  };
 
   const handleInputChange = async (event) => {
     const inputUsername = event.target.value;
@@ -17,32 +13,21 @@ function UserSearchBar({ onSearch }) {
   };
 
   return (
-    <div>
+    <div className="search-container">
       <TextField
         className="search-bar"
-        label="Search Username"
+        label="Search people by name"
         value={username}
         onChange={handleInputChange}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-              <IconButton onClick={handleSearch}>
-                <SearchIcon />
-              </IconButton>
+              <SearchIcon />
             </InputAdornment>
           ),
         }}
       />
     </div>
-    // <div>
-    //   <input
-    //     type="text"
-    //     placeholder="Enter username"
-    //     value={username}
-    //     onChange={handleInputChange}
-    //   />
-    //   <button onClick={handleSearch}>Search</button>
-    // </div>
   );
 }
 
