@@ -1,0 +1,26 @@
+/* .search-bar input,
+label,
+label.Mui-focused {
+  color: white;
+}
+
+.MuiInput-underline:after {
+  border-bottom-color: white;
+}
+
+.search-bar .MuiOutlinedInput-root fieldset {
+  border-color: white;
+}
+
+.search-bar .MuiOutlinedInput-root:hover {
+  border-color: white;
+  border-width: 2px;
+}
+
+.search-bar .Mui-focused fieldset {
+  border-color: white;
+}
+
+.search-bar.MuiSvgIcon-root {
+  color: white;
+} */
