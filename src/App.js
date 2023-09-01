@@ -82,7 +82,7 @@ function App() {
       </div>
       <div className="users-list-favorites-container">
         <h2>Favorites</h2>
-        {favorites.length === 0 ? (
+        {favorites && favorites.length === 0 ? (
           <p>No favorites selected yet.</p>
         ) : (
           favorites.map((favorite) => (
