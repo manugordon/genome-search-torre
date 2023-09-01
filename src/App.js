@@ -14,7 +14,9 @@ function App() {
 
   useEffect(() => {
     const storedFavorites = JSON.parse(sessionStorage.getItem("favorites"));
-    setFavorites(storedFavorites);
+    if (storedFavorites) {
+      setFavorites(storedFavorites);
+    }
   }, []);
 
   useEffect(() => {
