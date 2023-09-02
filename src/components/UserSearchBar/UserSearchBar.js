@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
 import { InputAdornment, TextField } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
+import React, { useState, useRef } from "react";
 import "./UserSearchBar.css";
 
 function UserSearchBar({ onSearch }) {

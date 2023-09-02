@@ -1,10 +1,8 @@
-import React from "react";
-
-import { IconButton } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-
+import { IconButton } from "@mui/material";
 import "./FavoriteButton.css";
+import React from "react";
 
 const FavoriteButton = ({ user, favorites, onAddFavorite }) => {
   const isFavorite =

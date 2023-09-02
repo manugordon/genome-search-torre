@@ -1,3 +1,4 @@
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import React from "react";
 import {
   List,
@@ -8,8 +9,6 @@ import {
   Divider,
 } from "@mui/material";
 import "./UsersList.css";
-
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 const UsersList = ({ user, favorites, addFavorite }) => {
   return (

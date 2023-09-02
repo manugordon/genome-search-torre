@@ -1,14 +1,13 @@
-import "./App.css";
-import React, { useState, useEffect } from "react";
 import UserSearchBar from "./components/UserSearchBar/UserSearchBar";
-import axios from "axios";
 import UsersList from "./components/UsersList/UsersList";
 import { LinearProgress, Box } from "@mui/material";
-
-// import Spinner from "./components/Spinner/Spinner";
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import getSearch from "./services/getSearch";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
+  const [query, setQuery] = useState(null);
   const [favorites, setFavorites] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -31,34 +30,13 @@ function App() {
     }
   };
 
-  const getData = (jsonString) => {
-    const jsonArray = jsonString.split("}\n");
-    jsonArray.pop();
-
-    const jsonObjects = jsonArray.map((json) => {
-      try {
-        return JSON.parse(json + "}");
-      } catch (error) {
-        console.error("Error parsing JSON:", error);
-        return null;
-      }
-    });
-    return jsonObjects;
-  };
-
   const handleSearch = async (query) => {
     setIsLoading(true);
+    setQuery(query);
     try {
-      const response = await axios.post(
-        "https://torre.ai/api/entities/_searchStream",
-        {
-          query: query,
-          identityType: "person",
-          limit: 10,
-        }
-      );
-      const data = getData(response.data);
-      setSearchResults(data);
+      const response = await getSearch(query);
+
+      setSearchResults(response);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -68,19 +46,20 @@ function App() {
   return (
     <div className="App">
       <UserSearchBar onSearch={handleSearch} />
-      {isLoading && (
+      {query && isLoading && (
         <Box className="linear-progress-container">
           <LinearProgress />
         </Box>
       )}
       <div className="users-list-container">
-        {searchResults.map((item) => (
-          <UsersList
-            user={item}
-            favorites={favorites}
-            addFavorite={addFavorite}
-          />
-        ))}
+        {query &&
+          searchResults.map((item) => (
+            <UsersList
+              user={item}
+              favorites={favorites}
+              addFavorite={addFavorite}
+            />
+          ))}
       </div>
       <div className="users-list-favorites-container">
         <h2>Favorites</h2>
